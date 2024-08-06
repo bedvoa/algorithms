@@ -1,7 +1,7 @@
 const fs = require("fs");
-const input = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+const input = fs.readFileSync("./stdin").toString().trim().split("\n");
 
-const solve = (input) => {
+const callbackFn = (input) => {
   const numbers = input[1].split(" ").map(Number);
   const maxNumber = Math.max(...numbers);
   const minNumber = Math.min(...numbers);
@@ -9,4 +9,6 @@ const solve = (input) => {
   console.log(maxNumber * minNumber);
 };
 
-solve(input);
+const solve = (input) => (fn) => fn(input);
+
+solve(input)(callbackFn);
